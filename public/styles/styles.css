@@ -3,7 +3,7 @@
 }
 
 body {
-    background: orangered;
+    background: rgb(110, 106, 182);
     color: white;
     display: flex;
     align-items: center;
@@ -11,4 +11,12 @@ body {
     height: 100vh;
     padding: 0;
     margin: 0;
+    font-size: 50px;
+}
+
+.fnf {
+    background: white;
+    color: black;
+    font-family: monospace;
+    font-size: 15px;
 }
