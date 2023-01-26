@@ -24,4 +24,6 @@ module.exports = Person
 
 // Uncomment out the log statements below to see examples values
 
-// console.log(__dirname, __filename, module.exports)
+// console.log(__dirname)
+// console.log(__filename)
+// console.log(module.exports)

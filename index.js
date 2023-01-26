@@ -4,6 +4,8 @@ const http = require('node:http')
 const path = require('node:path')
 const fs = require('node:fs')
 
+const public = path.join(__dirname, 'public')
+
 const server = http.createServer((req, res) => {
 
     /* Code that handles http requests. 
@@ -12,20 +14,20 @@ const server = http.createServer((req, res) => {
             Use this method for Assignment 1 */
 
     if (req.url === '/') {
-        fs.readFile(path.join(__dirname, 'public', 'index.html'),
+        fs.readFile(path.join(public, 'index.html'),
             (err, content) => {
                 if (err) throw err
                 res.writeHead(200, { 'Content-Type': 'text/html' })
                 res.end(content)
             })
     } else if (req.url === '/about') {
-        fs.readFile(path.join(__dirname, 'public', 'about.html'),
+        fs.readFile(path.join(public, 'about.html'),
             (err, content) => {
                 if (err) throw err
                 res.writeHead(200, { 'Content-Type': 'text/html' })
                 res.end(content)
             })
-    } else if (req.url === '/api/users') {
+    } else if (req.url === '/api/users') { // serving JSON
         const users = [
             { name: 'Bob Smith', age: 40 },
             { name: 'Jane Smith', age: 22 }
@@ -33,7 +35,7 @@ const server = http.createServer((req, res) => {
         res.writeHead(200, { 'Content-Type': 'application/json' })
         res.end(JSON.stringify(users))
     } else {    // serve "404 - Not Found" html
-        fs.readFile(path.join(__dirname, 'public', '404.html'),
+        fs.readFile(path.join(public, '404.html'),
             (err, content) => {
                 if (err) throw err;
                 res.writeHead(404, {'Content-Type': 'text/html' })

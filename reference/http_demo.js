@@ -1,9 +1,15 @@
 const http = require('http')
 
 // Create server object
-http.createServer((req, res) => {
-    console.log(req.url)
+const server = http.createServer((req, res) => {
+    console.log(`${req.url}`) // access to request object
     // Write reponse
+    res.statusCode
     res.write('Hello World')
     res.end()
-}).listen(5000, () => console.log('Server Runnning on port 5000...'))
+})
+
+// use the port assigned as an environment variable (production) or 4444 (development)
+const PORT = process.env.PORT || 4444
+
+server.listen(PORT, () => console.log(`Server Runnning on port ${PORT}...`))
